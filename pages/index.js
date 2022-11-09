@@ -1,25 +1,11 @@
 import React from 'react';
 import MainGrid from '../src/components/styles/MainGrid';
 import Box from '../src/components/styles/Box';
-import { AlurakutMenu, AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet } from '../src/lib/AluraCommons';
-import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations';
+import ProfileSidebar from '../src/components/ProfileSidebar';
+import SocialBox from '../src/components/SocialBox';
+import { AlurakutMenu } from '../src/lib/AluraCommons';
 
 
-function ProfileSidebar(props){
-  return(    
-    <Box as="aside">
-      <img src={`https://github.com/${props.githubUser}.png`} />
-      <hr />
-      <p>
-        <a className='boxLink' href={`https://github.com/${props.githubUser}`}> 
-          @{props.githubUser} 
-        </a>
-      </p>
-      <hr />
-      <AlurakutProfileSidebarMenuDefault />
-    </Box>
-  );
-}
 
 export default function Home() {
   const [comunidades, setComunidades] = React.useState([]);
@@ -27,7 +13,7 @@ export default function Home() {
   const amigos = ['galegogts','galegogts','galegogts','galegogts','galegogts','galegogts'];
 
   return (<>
-    <AlurakutMenu />
+    <AlurakutMenu githubUser={githubUser} />
     <MainGrid>
       <div className='profileArea'>
         <ProfileSidebar githubUser={githubUser} />
@@ -36,7 +22,7 @@ export default function Home() {
         <Box>
           <h1 className='title'>
             Bem Vindo(a)
-            <OrkutNostalgicIconSet/>
+            { /* <OrkutNostalgicIconSet/> */}
           </h1>
         </Box>
         <Box>
@@ -76,40 +62,8 @@ export default function Home() {
         </Box>
       </div>
       <div className='profileRelationsArea'>
-        <ProfileRelationsBoxWrapper>
-          <h2 className='smallTittle'>
-            Amigos ({amigos.length})
-          </h2>
-          <ul>
-            {amigos.map((e, index) => {
-              return(
-                <li key={index}>
-                  <a href={`/users/${e}`}>
-                    <img src={`https://github.com/${e}.png`} />
-                    <span>{e}</span>
-                  </a>
-                </li>
-              )
-            })}
-          </ul>
-        </ProfileRelationsBoxWrapper>
-        <ProfileRelationsBoxWrapper>
-          <h2 className='smallTittle'>
-            Comunidades ({comunidades.length})
-          </h2>
-          <ul>
-            {comunidades.map((e) => {
-              return(
-                <li key={id}>
-                  <a href={`/users/${e.title}`}>
-                    <img src={e.image} />
-                    <span>{e.title}</span>
-                  </a>
-                </li>
-              )
-            })}
-          </ul>
-        </ProfileRelationsBoxWrapper>
+        <SocialBox title="Comunidades" social={comunidades} />
+        <SocialBox title="Amigos" social={amigos} />
       </div>
     </MainGrid>
     </>)
