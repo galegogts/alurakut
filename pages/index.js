@@ -4,6 +4,7 @@ import Box from '../src/components/styles/Box';
 import ProfileSidebar from '../src/components/ProfileSidebar';
 import SocialBox from '../src/components/SocialBox';
 import { AlurakutMenu } from '../src/lib/AluraCommons';
+import Menu from '../src/components/Menu';
 
 
 
@@ -13,7 +14,7 @@ export default function Home() {
   const amigos = ['galegogts','galegogts','galegogts','galegogts','galegogts','galegogts'];
 
   return (<>
-    <AlurakutMenu githubUser={githubUser} />
+    <Menu githubUser={githubUser} />
     <MainGrid>
       <div className='profileArea'>
         <ProfileSidebar githubUser={githubUser} />
